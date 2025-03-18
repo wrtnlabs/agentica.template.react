@@ -52,7 +52,7 @@ export function Landing() {
             Documentation
           </a>
           <a
-            href="https://github.com/wrtn/agentica"
+            href="https://github.com/wrtnlabs/agentica"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2 border border-gray-700 bg-transparent text-gray-300 rounded-lg hover:bg-white/5 transition-all"
