@@ -1,53 +1,60 @@
-import { useState } from "react";
-import { ChatMessage } from "./ChatMessage";
+import { useAgenticaRpc } from "../../provider/AgenticaRpcProvider";
 import { ChatInput } from "./ChatInput";
-
-interface Message {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
-}
+import { ChatMessages } from "./ChatMessages";
+import { ChatStatus } from "./ChatStatus";
+import { useEffect, useRef } from "react";
 
 export function Chat() {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const { messages, conversate, isConnected, isError, tryConnect } =
+    useAgenticaRpc();
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const hasMessage = messages.length > 0;
+  const lastMessage = messages[messages.length - 1];
+  const isLastMessageFromUser =
+    lastMessage?.type === "text" && lastMessage?.role === "user";
 
-  const handleSendMessage = (content: string) => {
-    const newMessage: Message = {
-      id: Date.now().toString(),
-      role: "user",
-      content
-    };
-    setMessages((prev) => [...prev, newMessage]);
+  const scrollToBottom = () => {
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop =
+        messagesContainerRef.current.scrollHeight;
+    }
+  };
 
-    setTimeout(() => {
-      const aiResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content:
-          "This is a mock response. Implement actual AI integration here."
-      };
-      setMessages((prev) => [...prev, aiResponse]);
-    }, 1000);
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleSendMessage = async (content: string) => {
+    try {
+      await conversate(content);
+    } catch (error) {
+      console.error("Failed to send message:", error);
+    }
   };
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center p-8">
-      <div className="relative w-full h-[calc(100vh-4rem)]">
-        <div className="h-full flex flex-col bg-zinc-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-zinc-700/50">
-          <div className="flex-1 overflow-y-auto p-6 space-y-6">
-            {messages.length === 0 ? (
-              <div className="h-full flex items-center justify-center text-gray-400 text-sm">
-                Start a conversation by sending a message...
-              </div>
-            ) : (
-              messages.map((message) => (
-                <ChatMessage key={message.id} message={message} />
-              ))
-            )}
+    <div className="flex-1 flex flex-col items-center justify-center p-4 md:p-8">
+      <div className="relative w-full h-[calc(100vh-2rem)] md:h-[calc(100vh-4rem)]">
+        <div className="h-full flex flex-col bg-zinc-800/50 backdrop-blur-md rounded-2xl overflow-hidden border border-zinc-700/30">
+          <div
+            ref={messagesContainerRef}
+            className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth"
+          >
+            <ChatStatus
+              isError={isError}
+              isConnected={isConnected}
+              hasMessages={hasMessage}
+              onRetryConnect={tryConnect}
+              isWsUrlConfigured={import.meta.env.VITE_AGENTICA_WS_URL !== ""}
+            />
+            {hasMessage && <ChatMessages messages={messages} />}
           </div>
 
-          <div className="p-4 bg-zinc-900/50">
-            <ChatInput onSendMessage={handleSendMessage} />
+          <div className="p-4">
+            <ChatInput
+              onSendMessage={handleSendMessage}
+              disabled={!isConnected || isError || isLastMessageFromUser}
+            />
           </div>
         </div>
       </div>
