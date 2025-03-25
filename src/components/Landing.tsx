@@ -46,6 +46,7 @@ export function Landing() {
         <div className="flex gap-4 justify-center">
           <a
             href="https://wrtnlabs.io/agentica/docs"
+            target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2 bg-white text-zinc-900 font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-md hover:shadow-lg"
           >
