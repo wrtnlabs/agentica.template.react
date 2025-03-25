@@ -33,7 +33,7 @@ export const markdownComponents: Components = {
     const isInline = !className;
     if (isInline) {
       return (
-        <code className="bg-zinc-800/50 px-1.5 py-0.5 rounded text-gray-100 text-sm">
+        <code className="bg-zinc-800/50 px-1.5 py-0.5 rounded text-gray-100 text-sm break-all whitespace-pre-wrap">
           {children}
         </code>
       );
@@ -43,12 +43,12 @@ export const markdownComponents: Components = {
     const language = match ? match[1] : "plaintext";
 
     return (
-      <div className="relative group rounded-lg overflow-hidden bg-zinc-800/50 my-4">
+      <div className="relative group rounded-lg overflow-hidden bg-zinc-800/50 my-4 flex-1">
         <div className="absolute top-0 right-0 px-4 py-2 text-xs text-gray-400 uppercase bg-zinc-800/80 rounded-bl-lg">
           {language}
         </div>
         <pre className="!mt-0 !mb-0 overflow-x-auto p-4">
-          <code {...props} className={className}>
+          <code {...props} className={`whitespace-pre-wrap ${className}`}>
             {children}
           </code>
         </pre>
@@ -81,5 +81,5 @@ export const markdownComponents: Components = {
     >
       {children}
     </blockquote>
-  )
+  ),
 };
