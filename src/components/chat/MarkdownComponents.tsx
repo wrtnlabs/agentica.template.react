@@ -43,7 +43,7 @@ export const markdownComponents: Components = {
     const language = match ? match[1] : "plaintext";
 
     return (
-      <div className="relative group rounded-lg overflow-hidden bg-zinc-800/50 my-4 flex-1">
+      <div className="relative group rounded-lg overflow-hidden bg-zinc-800/50 my-4">
         <div className="absolute top-0 right-0 px-4 py-2 text-xs text-gray-400 uppercase bg-zinc-800/80 rounded-bl-lg">
           {language}
         </div>
