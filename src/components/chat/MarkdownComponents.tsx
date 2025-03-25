@@ -33,7 +33,7 @@ export const markdownComponents: Components = {
     const isInline = !className;
     if (isInline) {
       return (
-        <code className="bg-zinc-800/50 px-1.5 py-0.5 rounded text-gray-100 text-sm">
+        <code className="bg-zinc-800/50 px-1.5 py-0.5 rounded text-gray-100 text-sm break-all whitespace-pre-wrap">
           {children}
         </code>
       );
@@ -48,7 +48,7 @@ export const markdownComponents: Components = {
           {language}
         </div>
         <pre className="!mt-0 !mb-0 overflow-x-auto p-4">
-          <code {...props} className={className}>
+          <code {...props} className={`whitespace-pre-wrap ${className}`}>
             {children}
           </code>
         </pre>
@@ -81,5 +81,5 @@ export const markdownComponents: Components = {
     >
       {children}
     </blockquote>
-  )
+  ),
 };
