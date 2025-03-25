@@ -33,7 +33,7 @@ export function Chat() {
   };
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center p-4 md:p-8">
+    <div className="flex-1 flex flex-col items-center justify-center p-4 md:p-8 min-w-0">
       <div className="relative w-full h-[calc(100vh-2rem)] md:h-[calc(100vh-4rem)]">
         <div className="h-full flex flex-col bg-zinc-800/50 backdrop-blur-md rounded-2xl overflow-hidden border border-zinc-700/30">
           <div
