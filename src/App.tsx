@@ -11,7 +11,7 @@ function App() {
 
       {/* Content */}
       <div className="relative flex w-full min-h-screen">
-        <div className="hidden md:flex md:flex-1">
+        <div className="hidden lg:flex md:flex-1">
           <Landing />
         </div>
         <AgenticaRpcProvider>

@@ -25,7 +25,9 @@ export function ChatMessage({ message }: ChatMessageProps) {
         }`}
       >
         {isUser ? (
-          <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+          <p className="text-sm whitespace-pre-wrap break-all">
+            {message.content}
+          </p>
         ) : (
           <div className="prose prose-sm prose-invert max-w-none [&_pre]:!p-0 [&_pre]:!m-0 [&_pre]:!bg-transparent">
             <ReactMarkdown
