@@ -40,6 +40,7 @@ export function Chat() {
             ref={messagesContainerRef}
             className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth"
           >
+            {hasMessage && <ChatMessages messages={messages} />}
             <ChatStatus
               isError={isError}
               isConnected={isConnected}
@@ -47,7 +48,6 @@ export function Chat() {
               onRetryConnect={tryConnect}
               isWsUrlConfigured={import.meta.env.VITE_AGENTICA_WS_URL !== ""}
             />
-            {hasMessage && <ChatMessages messages={messages} />}
           </div>
 
           <div className="p-4">
