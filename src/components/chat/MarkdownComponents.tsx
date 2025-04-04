@@ -2,29 +2,31 @@ import type { Components } from "react-markdown";
 
 export const markdownComponents: Components = {
   h1: ({ children }) => (
-    <h1 className="text-2xl font-bold text-white mb-4">{children}</h1>
+    <h1 className="text-2xl font-bold text-white mb-4 break-all">{children}</h1>
   ),
   h2: ({ children }) => (
-    <h2 className="text-xl font-bold text-white mb-3">{children}</h2>
+    <h2 className="text-xl font-bold text-white mb-3 break-all">{children}</h2>
   ),
   h3: ({ children }) => (
-    <h3 className="text-lg font-bold text-white mb-2">{children}</h3>
+    <h3 className="text-lg font-bold text-white mb-2 break-all">{children}</h3>
   ),
   p: ({ children, ...props }) => (
-    <p {...props} className="text-sm text-gray-100 mb-4 last:mb-0">
+    <p {...props} className="text-sm text-gray-100 mb-4 last:mb-0 break-all">
       {children}
     </p>
   ),
   strong: ({ children }) => (
-    <strong className="font-bold text-white">{children}</strong>
+    <strong className="font-bold text-white break-all">{children}</strong>
   ),
-  em: ({ children }) => <em className="italic text-gray-300">{children}</em>,
+  em: ({ children }) => (
+    <em className="italic text-gray-300 break-all">{children}</em>
+  ),
   a: ({ children, ...props }) => (
     <a
       {...props}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-blue-400 hover:text-blue-300 transition-colors underline"
+      className="text-blue-400 hover:text-blue-300 transition-colors underline break-all"
     >
       {children}
     </a>
@@ -43,11 +45,11 @@ export const markdownComponents: Components = {
     const language = match ? match[1] : "plaintext";
 
     return (
-      <div className="relative group rounded-lg overflow-hidden bg-zinc-800/50 my-4">
+      <div className="relative group rounded-lg overflow-hidden bg-zinc-800/50 my-4 break-all">
         <div className="absolute top-0 right-0 px-4 py-2 text-xs text-gray-400 uppercase bg-zinc-800/80 rounded-bl-lg">
           {language}
         </div>
-        <pre className="!mt-0 !mb-0 overflow-x-auto p-4">
+        <pre className="!mt-0 !mb-0 overflow-x-auto p-4 break-all">
           <code {...props} className={`whitespace-pre-wrap ${className}`}>
             {children}
           </code>
@@ -56,20 +58,20 @@ export const markdownComponents: Components = {
     );
   },
   ul: ({ children, ...props }) => (
-    <ul {...props} className="list-none space-y-1 mb-4 last:mb-0">
+    <ul {...props} className="list-none space-y-1 mb-4 last:mb-0 break-all">
       {children}
     </ul>
   ),
   ol: ({ children, ...props }) => (
     <ol
       {...props}
-      className="list-decimal list-inside space-y-1 mb-4 last:mb-0"
+      className="list-decimal list-inside space-y-1 mb-4 last:mb-0 break-all"
     >
       {children}
     </ol>
   ),
   li: ({ children, ...props }) => (
-    <li {...props} className="text-sm text-gray-100 flex items-start">
+    <li {...props} className="text-sm text-gray-100 flex items-start break-all">
       <span className=" mr-2">•</span>
       <span>{children}</span>
     </li>
@@ -77,7 +79,7 @@ export const markdownComponents: Components = {
   blockquote: ({ children, ...props }) => (
     <blockquote
       {...props}
-      className="border-l-2 border-blue-400 pl-4 italic text-gray-300 mb-4 last:mb-0"
+      className="border-l-2 border-blue-400 pl-4 italic text-gray-300 mb-4 last:mb-0 break-all"
     >
       {children}
     </blockquote>
