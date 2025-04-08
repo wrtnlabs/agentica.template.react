@@ -1,0 +1,37 @@
+version: 2 # Dependabot 버전.
+updates: # 어떤 디렉토리, 어떤 패키지 매니저를 대상으로 업데이트할 지 정의하는 곳.
+  - package-ecosystem: "npm" # 어떤 패키지 매니저를 대상으로 할지 설정.
+    directory: "/" # 어떤 디렉토리를 대상으로 할지 설정. 여기서는 루트 디렉토리를 기준으로 Observe 한다.
+    schedule:
+      interval: "daily" # 매일 한 번씩 체크하도록 설정.
+    open-pull-requests-limit: 25 # 최대 10개의 PR을 동시에 열어둘 수 있도록 설정. Dependency 당 하나의 PR이 열린다. 혹은 Group당 하나의 PR이 열린다.
+    versioning-strategy: increase # 버전 번호를 증가시키는 전략을 사용.
+    allow: # 어떤 dependency를 업데이트 대상으로 허용할지 결정.
+      - dependency-name: "@agentica/*"
+      - dependency-name: "tgrid"
+      - dependency-name: "@tailwindcss/vite"
+      - dependency-name: "vite"
+      - dependency-name: "react*"
+      - dependency-name: "typescript"
+      - dependency-name: "@types/react"
+      - dependency-name: "@vitejs/plugin-react"
+      - dependency-name: "tailwindcss"
+
+    groups: # allow 중 일부를 묶어서 하나의 PR로 보낼지 정하는 옵션. allow에 패키지가 명시되어 있어야 한다.
+      Agent: # 그룹 이름.
+        patterns: # 그룹에 포함할 패턴.
+          - "@agentica/*"
+          - "tgrid"
+      React:
+        patterns:
+          - "react*"
+          - "@tailwindcss/vite"
+          - "vite"
+          - "@types/react*"
+          - "@vitejs/plugin-react"
+          - "tailwindcss"
+      TypeScript:
+        patterns:
+          - "typescript"
+    labels:
+      - "automerge"
