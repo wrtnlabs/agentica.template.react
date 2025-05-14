@@ -51,8 +51,9 @@ export function AgenticaRpcProvider({ children }: PropsWithChildren) {
         IAgenticaRpcListener,
         IAgenticaRpcService<"chatgpt">
       >(null, {
+        assistantMessage: pushMessage,
         describe: pushMessage,
-        text: pushMessage
+        userMessage: pushMessage
       });
       await connector.connect(import.meta.env.VITE_AGENTICA_WS_URL);
       const driver = connector.getDriver();

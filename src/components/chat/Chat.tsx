@@ -10,8 +10,7 @@ export function Chat() {
   const messagesContainerRef = useRef<HTMLDivElement>(null);
   const hasMessage = messages.length > 0;
   const lastMessage = messages[messages.length - 1];
-  const isLastMessageFromUser =
-    lastMessage?.type === "text" && lastMessage?.role === "user";
+  const isLastMessageFromUser = lastMessage?.type === "userMessage";
 
   const scrollToBottom = () => {
     if (messagesContainerRef.current) {
