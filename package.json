@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@agentica/core": "^0.29.0",
-    "@agentica/rpc": "^0.29.0",
+    "@agentica/core": "^0.29.1",
+    "@agentica/rpc": "^0.29.1",
     "@tailwindcss/vite": "^4.1.11",
     "@types/prismjs": "^1.26.5",
     "highlight.js": "^11.11.1",
