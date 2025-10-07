@@ -24,7 +24,7 @@
     "tgrid": "^1.2.0"
   },
   "devDependencies": {
-    "@types/react": "^19.2.0",
+    "@types/react": "^19.2.2",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^5.0.4",
     "globals": "^15.15.0",
