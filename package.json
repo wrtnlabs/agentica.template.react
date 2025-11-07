@@ -12,7 +12,7 @@
   "dependencies": {
     "@agentica/core": "^0.33.2",
     "@agentica/rpc": "^0.33.2",
-    "@tailwindcss/vite": "^4.1.16",
+    "@tailwindcss/vite": "^4.1.17",
     "@types/prismjs": "^1.26.5",
     "highlight.js": "^11.11.1",
     "prismjs": "^1.30.0",
@@ -28,8 +28,8 @@
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^5.1.0",
     "globals": "^15.15.0",
-    "tailwindcss": "^4.1.16",
+    "tailwindcss": "^4.1.17",
     "typescript": "~5.9.3",
-    "vite": "^7.2.1"
+    "vite": "^7.2.2"
   }
 }
